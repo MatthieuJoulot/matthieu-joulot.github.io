@@ -1,0 +1,12 @@
+main:
+  - title: "About me"
+    url: /
+
+  - title: "Publications"
+    url: /publications/
+
+  - title: "Open-Source"
+    url: /contributions/
+
+  - title: "CV"
+    url: /cv/
