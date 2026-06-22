@@ -43,54 +43,22 @@ Skills
 Publications
 ======
 
-<style>
-  .cv-pub-group { font-weight: bold; margin-top: 1.2em; margin-bottom: 0.2em; }
-  .cv-pub-sub { font-style: italic; font-size: 0.9em; margin-top: 0.8em; margin-bottom: 0.2em; }
-  .cv-pub-list { list-style: disc; padding-left: 1.5em; margin: 0; }
-  .cv-pub-list li { font-size: 0.82em; margin-bottom: 0.4em; }
-</style>
-
+* **First author**
 {% assign first_cats = "manuscripts_first,conferences_first,abstracts_first" | split: "," %}
-{% assign has_first = false %}
-{% for cat_key in first_cats %}
-  {% assign cat_posts = site.publications | where: "category", cat_key %}
-  {% if cat_posts.size > 0 %}{% assign has_first = true %}{% endif %}
-{% endfor %}
-{% if has_first %}
-<p class="cv-pub-group">First Author</p>
 {% for cat_key in first_cats %}
   {% assign cat_posts = site.publications | where: "category", cat_key %}
   {% if cat_posts.size > 0 %}
-  <p class="cv-pub-sub">{{ site.publication_category[cat_key].title }}</p>
-  <ul class="cv-pub-list">
-    {% for post in cat_posts reversed %}
-    <li>{{ post.citation }}{% if post.doi %} — <a href="{{ post.doi }}">DOI</a>{% endif %}{% if post.hal %} | <a href="{{ post.hal }}">HAL</a>{% endif %}</li>
-    {% endfor %}
-  </ul>
+  * {{ site.publication_category[cat_key].title }}: {{ cat_posts.size }}
   {% endif %}
 {% endfor %}
-{% endif %}
-
+* **Co-author**
 {% assign co_cats = "manuscripts_co,conferences_co,abstracts_co" | split: "," %}
-{% assign has_co = false %}
-{% for cat_key in co_cats %}
-  {% assign cat_posts = site.publications | where: "category", cat_key %}
-  {% if cat_posts.size > 0 %}{% assign has_co = true %}{% endif %}
-{% endfor %}
-{% if has_co %}
-<p class="cv-pub-group">Co-author</p>
 {% for cat_key in co_cats %}
   {% assign cat_posts = site.publications | where: "category", cat_key %}
   {% if cat_posts.size > 0 %}
-  <p class="cv-pub-sub">{{ site.publication_category[cat_key].title }}</p>
-  <ul class="cv-pub-list">
-    {% for post in cat_posts reversed %}
-    <li>{{ post.citation }}{% if post.doi %} — <a href="{{ post.doi }}">DOI</a>{% endif %}{% if post.hal %} | <a href="{{ post.hal }}">HAL</a>{% endif %}</li>
-    {% endfor %}
-  </ul>
+  * {{ site.publication_category[cat_key].title }}: {{ cat_posts.size }}
   {% endif %}
 {% endfor %}
-{% endif %}
 
 [See full list of publications →](/publications/)
 
